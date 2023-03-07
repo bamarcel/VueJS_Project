@@ -1,18 +1,26 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import AddTeamView from '../views/TeamsView.vue';
+import TeamsView from '../views/TeamsView.vue';
+import HomeView from '../views/HomeView.vue';
+import ResultsView from '../views/ResultView.vue';
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: '/add-team',
-            name: 'AddTeamView',
-            component: AddTeamView
+            path: '/teams',
+            name: 'TeamsView',
+            component: TeamsView
         },
         {
-            path: '/',
-            name: 'Home',
-        }
+            path: '/home',
+            name: 'HomeView',
+            component: HomeView
+        },
+        {
+            path: '/results',
+            name: 'ResultsView',
+            component: ResultsView
+        },
     ]
 })
 

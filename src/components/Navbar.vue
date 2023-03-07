@@ -2,18 +2,9 @@
     <nav>
         <ul>
             <li v-for="link in links" :key="link">
-                <!-- <RouterLink v-if="link === 'Teams'" :to="{name: AddTeamForm}">
+                <router-link :to="{name: link + 'View'}">
                     {{ link }}
-                </RouterLink>
-                <RouterLink v-else :to="'/'">
-                    {{ link }}
-                </RouterLink> -->
-                <a v-if="link === 'Teams'" @click.prevent="displayAddTeamForm()">
-                    {{ link }}
-                </a>
-                <a v-else href="#">
-                    {{ link }}
-                </a>
+                </router-link>
             </li>
         </ul>
     </nav>
