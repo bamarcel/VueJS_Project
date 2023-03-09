@@ -1,5 +1,6 @@
 <template>
     <nav>
+        <img id="logo" src="../assets/img/imgNBA.png"/>
         <ul>
             <li v-for="link in links" :key="link">
                 <router-link :to="{name: link + 'View'}">
@@ -36,31 +37,34 @@
 
 <style scoped>
     nav {
-        background-color: #244375;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        height: 70px;
+        background-color: white;
     }
 
     ul {
         display: flex;
+        flex-direction: row;
         justify-content: space-around;
-        padding: 0;
+        width: 30%;
+        height: 100%;
         margin: 0;
     }
 
     li {
         list-style-type: none;
+        align-self: center;
     }
 
     a {
         display: block;
-        color: white;
+        color: black;
         text-decoration: none;
         padding: 10px;
+        font-size: 25px;
     }
 
-    @media screen and (max-width: 768px) {
-        ul {
-            flex-direction: column;
-            align-items: center;
-        }
-    }
 </style>
