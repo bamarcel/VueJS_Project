@@ -2,6 +2,11 @@
     <div id="team">
         <h1>{{id}} - {{ name }}</h1>
         <p>{{ description }}</p>
+
+        <div>
+            <button @click="modifyTeamName()">Changer le nom</button>
+            <button @click="modifyTeamDescription()">Changer la description</button>
+        </div>
     </div>
 </template>
 
@@ -11,6 +16,14 @@
             id: Number,
             name: String,
             description: String,
+        },
+        methods:{
+            modifyTeamName(){
+                this.$emit("modify-team-name", this.id);
+            },
+            modifyTeamDescription(){
+                this.$emit("modify-team-description", this.id);
+            }
         }
     }
 </script>

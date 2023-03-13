@@ -12,11 +12,7 @@ import TeamCard from "../components/TeamCard.vue"
         <div id="divTeam">
             <div v-for="team in allTeams">
                 <team-card :id="team.id" :name="team.name"
-                    :description="team.description.length > 20 ? team.description.substring(0, 20) + '...' : team.description" />
-                <div>
-                    <button @click="modifyTeamName(team.id)">Changer le nom</button>
-                    <button @click="modifyTeamDescription(team.id)">Changer la description</button>
-                </div>
+                    :description="team.description.length > 20 ? team.description.substring(0, 20) + '...' : team.description" @modify-team-name = "modifyTeamName" @modify-team-description="modifyTeamDescription"/>
             </div>
         </div>
     </main>
@@ -42,7 +38,7 @@ export default {
             const divError = document.getElementById("divError");
             divError.innerHTML = error;            
         },
-        
+
         modifyTeamName(id){
                 const team = this.allTeams.find(team => team.id === id);
                 const newName = prompt("Nouveau nom de l'équipe", team.name);
