@@ -4,19 +4,22 @@ import TeamCard from "../components/TeamCard.vue"
 </script>
 
 <template>
-    <div id="divError"></div>
-    <add-team-form @add-team="setTeams" @emptyError="displayError" />
-    <div id="divTeam" v-for="team in allTeams">
-        <team-card :id="team.id" :name="team.name"
-            :description="team.description.length > 20 ? team.description.substring(0, 20) + '...' : team.description" />
-    </div>
+    <main>
+        <div id="divForm">
+            <add-team-form @add-team="setTeams" @emptyError="displayError" />
+            <div id="divError"></div>
+        </div>
+        <div id="divTeam">
+            <div v-for="team in allTeams">
+                <team-card :id="team.id" :name="team.name"
+                    :description="team.description.length > 20 ? team.description.substring(0, 20) + '...' : team.description" />
+            </div>
+        </div>
+    </main>
 </template>
 
 <script>
 export default {
-    components: {
-        AddTeamForm,
-    },
     data() {
         return {
             allTeams: []
@@ -40,10 +43,26 @@ export default {
 </script>
 
 <style>
-#divTeam {
+main {
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    margin: 10px;
+    width: auto;
+    flex-wrap: wrap;
+    height: calc(100vh - 70px);
+}
+
+#divForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+#divTeam {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    flex-wrap: wrap;
 }
 </style>

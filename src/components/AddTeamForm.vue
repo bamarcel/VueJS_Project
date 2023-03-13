@@ -95,7 +95,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 100%;
     height: calc(100vh - 70px);
     /* background-color: red; */
     background-image:  url("../assets/img/oui.jpg");
