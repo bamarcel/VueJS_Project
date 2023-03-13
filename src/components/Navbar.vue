@@ -45,6 +45,12 @@
         background-color: white;
     }
 
+    #logo {
+        width: 30px;
+        height: 60px;
+        align-self: center;
+    }
+
     ul {
         display: flex;
         flex-direction: row;

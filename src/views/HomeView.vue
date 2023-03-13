@@ -16,8 +16,4 @@
 </script>
 
 <style>
-    body {
-        margin: 0 auto;
-        background-color: #f5f5f7;
-    }
 </style>
