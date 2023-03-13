@@ -38,12 +38,44 @@ export default {
             console.log(this.allTeams);
         },
 
-            displayError(error){
-                const divError = document.getElementById("divError");
-                divError.innerHTML = error;
+        displayError(error){
+            const divError = document.getElementById("divError");
+            divError.innerHTML = error;            
+        },
+        
+        modifyTeamName(id){
+                const team = this.allTeams.find(team => team.id === id);
+                const newName = prompt("Nouveau nom de l'équipe", team.name);
+                
+                if(newName === null){
+                    this.displayError("Le nom de l'équipe ne peut pas être vide");
+                }
+                else if(newName.length < 5){
+                    this.displayError("Le nom de l'équipe doit faire au moins 5 caractères");
+                }
+                else{
+                    this.displayError("");
+                    team.name = newName;
+                }
+            },
+
+            modifyTeamDescription(id){
+                const team = this.allTeams.find(team => team.id === id);
+                const newDescription = prompt("Nouvelle description de l'équipe", team.description);
+                
+                if(newDescription === null){
+                    this.displayError("La description de l'équipe ne peut pas être vide");
+                }
+                else if(newDescription.length < 20){
+                    this.displayError("La description de l'équipe doit faire au moins 20 caractères");
+                }
+                else{
+                    this.displayError("");
+                    team.description = newDescription;
+                }
             }
-        }
-    };
+    }
+};
 </script>
 
 <style>
