@@ -2,10 +2,9 @@
     <div id="team">
         <h1>{{id}} - {{ name }}</h1>
         <p>{{ description }}</p>
-
-        <div>
-            <button @click="modifyTeamName()">Changer le nom</button>
-            <button @click="modifyTeamDescription()">Changer la description</button>
+        <div id="boutons">
+            <button id="name" @click="modifyTeamName()">Changer le nom</button>
+            <button id="Desc" @click="modifyTeamDescription()">Changer la description</button>
         </div>
     </div>
 </template>
@@ -29,6 +28,21 @@
 </script>
 
 <style>
+    #boutons {
+        display: flex;
+        width: 60%;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    #name {
+        border-radius: 15px;
+    }
+
+    #Desc {
+        border-radius: 15px;
+    }
+
     #team {
         display: flex;
         flex-direction: column;
@@ -38,5 +52,6 @@
         background-color: white;
         border-radius: 15px;
         margin-top: 10px;
+        padding-bottom: 10px;
     }
 </style>

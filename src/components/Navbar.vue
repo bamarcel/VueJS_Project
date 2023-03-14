@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <img id="logo" src="../assets/img/imgNBA.png"/>
+        <img id="logo" src="../assets/img/enfin.png"/>
         <ul>
             <li v-for="link in links" :key="link">
                 <router-link :to="{name: link + 'View'}">
@@ -46,9 +46,9 @@
     }
 
     #logo {
-        width: 30px;
-        height: 60px;
+        width: 60px;
         align-self: center;
+        background-color: white;
     }
 
     ul {

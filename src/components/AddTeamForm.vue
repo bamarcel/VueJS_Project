@@ -98,8 +98,7 @@ main {
     width: 100%;
     height: calc(100vh - 70px);
     /* background-color: red; */
-    background-image:  url("../assets/img/oui.jpg");
-    background-size: cover;
+    background-image:  url("../assets/img/ouinon.jpg");
 }
 
 form {
@@ -138,10 +137,13 @@ input {
     border-radius: 15px;
     border: none;
     margin-bottom: 15px;
-    background-color: hsla(0, 0%, 45%, 0.30); 
+    background-color: hsla(0, 0%, 100%, 0.4); 
     font-style: italic;
     font-size: 20;
-    color: white;
+}
+
+input::placeholder {
+    color: black;
 }
 
 button {
@@ -155,14 +157,14 @@ button {
     height: 35px;   
     font-size: 17px;
     font-weight: 700;
-    background-color: hsla(0, 0%, 45%, 0.70); 
+    background-color: hsla(0, 0%, 100%, 0.5); 
     border-radius: 15px;
     border: none;
     margin-bottom: 15px;
 }
 
 button:hover {
-    background-color: hsla(0, 0%, 80%, 0.7);
+    background-color: rgb(175, 67, 182);
 }
 
 .error {
