@@ -3,8 +3,7 @@
         <h1>{{id}} - {{ name }}</h1>
         <p>{{ description }}</p>
         <div id="boutons">
-            <button id="name" @click="modifyTeamName()">Changer le nom</button>
-            <button id="Desc" @click="modifyTeamDescription()">Changer la description</button>
+            <button id="name" @click="modifyTeam()">Editer</button>
         </div>
     </div>
 </template>
@@ -17,11 +16,8 @@
             description: String,
         },
         methods:{
-            modifyTeamName(){
-                this.$emit("modify-team-name", this.id);
-            },
-            modifyTeamDescription(){
-                this.$emit("modify-team-description", this.id);
+            modifyTeam(){
+                this.$emit("modify-team", this.id);
             }
         }
     }
