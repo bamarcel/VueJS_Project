@@ -6,12 +6,13 @@
 <template>
   <main>
     <div id="divForm">
-      <add-team-form @add-team="setTeams" @emptyError="displayError" />
+      <add-team-form ref="addTeamForm" @add-team="setTeams" @emptyError="displayError" />
       <div id="divError"></div>
     </div>
     <div id="divTeam">
       <div v-for="team in allTeams">
         <team-card
+          ref="teamCard"
           :id="team.id"
           :name="team.name"
           :description="
@@ -21,9 +22,11 @@
           "
           @modify-team-name="modifyTeamName"
           @modify-team-description="modifyTeamDescription"
+          @modify-team="modifyTeam"
         />
       </div>
     </div>
+    <button @click="exportTeams()">Export</button>
   </main>
 </template>
 
@@ -31,15 +34,25 @@
 export default {
   data() {
     return {
-      allTeams: []
+      allTeams: [],
+      modify: false
     }
   },
   methods: {
-    setTeams(team) {
+    setTeams(newTeam) {
       const divError = document.getElementById('divError')
       divError.innerHTML = ''
 
-      this.allTeams.push(team)
+      if(this.modify === false){
+        this.allTeams.push(newTeam)
+      }
+      else{
+        const team = this.allTeams.find((team) => team.id === newTeam.id)
+        team.name = newTeam.name
+        team.description = newTeam.description
+        this.modify = false
+      }
+      
       console.log(this.allTeams)
     },
 
@@ -48,32 +61,15 @@ export default {
       divError.innerHTML = error
     },
 
-    modifyTeamName(id) {
-      const team = this.allTeams.find((team) => team.id === id)
-      const newName = prompt("Nouveau nom de l'équipe", team.name)
-
-      if (newName === null) {
-        this.displayError("Le nom de l'équipe ne peut pas être vide")
-      } else if (newName.length < 5) {
-        this.displayError("Le nom de l'équipe doit faire au moins 5 caractères")
-      } else {
-        this.displayError('')
-        team.name = newName
-      }
+    modifyTeam(id){
+      this.modify = true
+      this.$refs.addTeamForm.id = this.allTeams.find((team) => team.id === id).id
+      this.$refs.addTeamForm.name = this.allTeams.find((team) => team.id === id).name
+      this.$refs.addTeamForm.description = this.allTeams.find((team) => team.id === id).description
     },
 
-    modifyTeamDescription(id) {
-      const team = this.allTeams.find((team) => team.id === id)
-      const newDescription = prompt("Nouvelle description de l'équipe", team.description)
-
-      if (newDescription === null) {
-        this.displayError("La description de l'équipe ne peut pas être vide")
-      } else if (newDescription.length < 20) {
-        this.displayError("La description de l'équipe doit faire au moins 20 caractères")
-      } else {
-        this.displayError('')
-        team.description = newDescription
-      }
+    exportTeams(){
+      console.log(JSON.stringify(this.allTeams, null, 2))
     }
   }
 }
