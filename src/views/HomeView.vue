@@ -5,19 +5,18 @@
 </script>
 
 <template>
-    <div>
-      <h1>News</h1>
-      <ul>
-        <li v-for="article in articles">
+    <main>
+      <div id="allNews">
+        <div id="news" v-for="article in articles">
             <news-card
                 :title="article.title"
                 :description="article.description"
                 :url="article.url"
                 :urlImage="article.urlToImage"
                 :date="moment(article.publishedAt).format('DD/MM/YYYY HH[h]mm')"/>
-        </li>
-      </ul>
-    </div>
+        </div>
+      </div>
+    </main>
 </template>
   
 <script>
@@ -35,3 +34,25 @@
   }
 </script>
   
+<style scoped>
+main {
+  display: flex;
+  width: auto;
+}
+
+#allNews {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#news {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 10px 5px 0 5px;
+  border-radius: 15px;
+  background-color: white;
+}
+</style>
