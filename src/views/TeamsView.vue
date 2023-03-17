@@ -6,6 +6,7 @@
 <template>
   <main>
     <div id="divForm">
+      <img id="exportIcon" src="../assets/img/export3.png" @click="exportTeams()"/>
       <add-team-form ref="addTeamForm" @add-team="setTeams" @emptyError="displayError" />
       <div id="divError"></div>
     </div>
@@ -24,7 +25,6 @@
         />
       </div>
     </div>
-    <button @click="exportTeams()">Export</button>
   </main>
 </template>
 
@@ -80,6 +80,15 @@ main {
   width: auto;
   flex-wrap: wrap;
   height: calc(100vh - 70px);
+}
+
+#exportIcon {
+  position: absolute;
+  top: 9%;
+  right: 1%;
+  background-color: transparent;
+  cursor: pointer;
+  width: 35px;
 }
 
 #divForm {
