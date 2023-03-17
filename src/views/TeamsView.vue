@@ -20,8 +20,6 @@
               ? team.description.substring(0, 20) + '...'
               : team.description
           "
-          @modify-team-name="modifyTeamName"
-          @modify-team-description="modifyTeamDescription"
           @modify-team="modifyTeam"
         />
       </div>
