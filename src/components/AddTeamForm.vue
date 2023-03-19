@@ -16,11 +16,12 @@
 </template>
 
 <script>
+import TeamData from "../data/teams.json";
 export default {
     name: 'AddTeamForm',
     data() {
         return {
-            id: 1,
+            id: TeamData.length + 1,
             name: '',
             hasNameError: false,
             description: '',

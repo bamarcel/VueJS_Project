@@ -37,6 +37,7 @@ export default {
       modify: false
     }
   },
+  
   methods: {
     setTeams(newTeam) {
       const divError = document.getElementById('divError')
@@ -62,26 +63,24 @@ export default {
 
     modifyTeam(id){
       this.modify = true
-      this.$refs.addTeamForm.id = this.allTeams.find((team) => team.id === id).id
-      this.$refs.addTeamForm.name = this.allTeams.find((team) => team.id === id).name
-      this.$refs.addTeamForm.description = this.allTeams.find((team) => team.id === id).description
+      const team = this.allTeams.find((team) => team.id === id)
+
+      this.$refs.addTeamForm.id = team.id;
+      this.$refs.addTeamForm.name = team.name;
+      this.$refs.addTeamForm.description = team.description;
     },
 
     exportTeams(){
       console.log(JSON.stringify(this.allTeams, null, 2))
     }
   },
+  
   created(){
     this.allTeams = TeamData; 
   },
+  
   async beforeDestroy(){
-    const response = await fetch(TeamData, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(this.allTeams)
-    });
+    TeamData = this.allTeams;
   }
 }
 </script>
