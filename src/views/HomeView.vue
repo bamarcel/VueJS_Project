@@ -40,11 +40,6 @@
 </script>
   
 <style scoped>
-main {
-  display: flex;
-  width: auto;
-}
-
 #allNews {
   display: flex;
   flex-direction: row;

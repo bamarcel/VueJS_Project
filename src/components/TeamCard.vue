@@ -3,7 +3,7 @@
         <h1>{{id}} - {{ name }}</h1>
         <p>{{ description }}</p>
         <div id="boutons">
-            <button id="name" @click="modifyTeam()">Editer</button>
+            <button id="edit" @click="modifyTeam()">Editer</button>
         </div>
     </div>
 </template>
@@ -49,5 +49,19 @@
         border-radius: 15px;
         margin-top: 10px;
         padding-bottom: 10px;
+    }
+
+    #edit {
+        width: 100px;
+        height: 25px;
+        border-radius: 10px;
+        background-color: #c284df;
+        color: white;
+        font-size: 1.2em;
+        border: none;
+    }
+
+    #edit:hover {
+        background-color: #a05cb5;
     }
 </style>
