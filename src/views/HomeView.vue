@@ -27,9 +27,14 @@
       }
     },
     async created() {
+      try{
         const response = await NewsService.getNews();
-        console.log(response);
         this.articles = response.articles;
+      }
+      catch (error) {
+        document.getElementById('allNews').innerHTML = "Le serveur n'est pas disponible";
+      }
+        
     }
   }
 </script>

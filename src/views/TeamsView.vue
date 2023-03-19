@@ -1,6 +1,7 @@
 <script setup>
   import AddTeamForm from '../components/AddTeamForm.vue'
   import TeamCard from '../components/TeamCard.vue'
+  import TeamData from '../data/teams.json'
 </script>
 
 <template>
@@ -69,6 +70,18 @@ export default {
     exportTeams(){
       console.log(JSON.stringify(this.allTeams, null, 2))
     }
+  },
+  created(){
+    this.allTeams = TeamData; 
+  },
+  async beforeDestroy(){
+    const response = await fetch(TeamData, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(this.allTeams)
+    });
   }
 }
 </script>
